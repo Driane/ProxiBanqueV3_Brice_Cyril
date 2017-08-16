@@ -1,26 +1,39 @@
 package org.formation.model;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.formation.model.Personne;
 
 
 @Entity
 @ManagedBean
+@Table(name="client")
 public class Client extends Personne {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idClient;
 	
 	private String email;
 	private String adresse;
 	private String codePostal;
 	private String ville;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idClient;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="comptecourant_client")
+	private CompteCourant compteCourant;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="compteepargne_client")
+	private CompteEpargne compteEpargne;
 	
 	public Client(String nom, String prenom) {
 		super(nom, prenom);
