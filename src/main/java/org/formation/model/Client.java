@@ -1,5 +1,7 @@
 package org.formation.model;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,17 +12,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.formation.model.Personne;
 
 
 @Entity
 @ManagedBean
 @Table(name="client")
-public class Client extends Personne {
+public class Client implements Serializable {
 	
+
+	private static final long serialVersionUID = -2524331431768668681L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idClient;
+	
+	private String nom;
+	private String prenom;
 	
 	private String email;
 	private String adresse;
@@ -28,25 +35,50 @@ public class Client extends Personne {
 	private String ville;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="comptecourant_client")
+	@JoinColumn(name="comptecourant_client", unique=true)
 	private CompteCourant compteCourant;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="compteepargne_client")
+	@JoinColumn(name="compteepargne_client", unique=true)
 	private CompteEpargne compteEpargne;
 	
+
 	public Client(String nom, String prenom) {
-		super(nom, prenom);
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
 	}
 
 	public Client(String nom, String prenom, String email, String adresse, String codePostal, String ville) {
-		super(nom, prenom);
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
 		this.ville = ville;
 	}
+	
+	public Client() {
+		super();
+	}
 
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
 	public String getEmail() {
 		return email;
@@ -84,14 +116,28 @@ public class Client extends Personne {
 		return idClient;
 	}
 
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+
+	public CompteCourant getCompteCourant() {
+		return compteCourant;
+	}
+
+	public void setCompteCourant(CompteCourant compteCourant) {
+		this.compteCourant = compteCourant;
+	}
+
+	public CompteEpargne getCompteEpargne() {
+		return compteEpargne;
+	}
+
+	public void setCompteEpargne(CompteEpargne compteEpargne) {
+		this.compteEpargne = compteEpargne;
 	}
 
 	@Override
 	public String toString() {
-		return "Client [email=" + email + ", adresse=" + adresse + ", codePostal=" + codePostal + ", ville=" + ville
-				+ ", idClient=" + idClient + "]";
+		return "Client [idClient=" + idClient + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
+				+ ", adresse=" + adresse + ", codePostal=" + codePostal + ", ville=" + ville + ", compteCourant="
+				+ compteCourant + ", compteEpargne=" + compteEpargne + "]";
 	}
 
 
