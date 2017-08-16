@@ -19,7 +19,9 @@ public class test {
 		Date date = new Date();
 		String numCC = "client1-CC";
 		CompteCourant cc = new CompteCourant(solde, date, numCC);
-		client1.setCompteCourant(cc);		
+		
+		client1.setCompteCourant(cc);	
+		
 		dao.ajouterClientDao(client1);
 
 	}
