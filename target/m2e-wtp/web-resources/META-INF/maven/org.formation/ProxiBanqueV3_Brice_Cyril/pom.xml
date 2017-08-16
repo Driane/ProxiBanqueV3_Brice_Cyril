@@ -18,7 +18,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.5.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -71,11 +71,11 @@
 			<version>5.1.31</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.h2database</groupId> -->
-<!-- 			<artifactId>h2</artifactId> -->
-<!-- 			<version>1.4.190</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.h2database</groupId> -->
+		<!-- <artifactId>h2</artifactId> -->
+		<!-- <version>1.4.190</version> -->
+		<!-- </dependency> -->
 
 
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
@@ -91,6 +91,34 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.1.7</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>1.1.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.1</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.primefaces.themes</groupId> -->
+		<!-- <artifactId>all-themes</artifactId> -->
+		<!-- <version>1.0.10</version> -->
+		<!-- </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
+		
+<dependency>
+    <groupId>org.primefaces.extensions</groupId>
+    <artifactId>all-themes</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
 
 		<!-- Logging with SLF4J & LogBack -->
 		<!-- <dependency> -->
