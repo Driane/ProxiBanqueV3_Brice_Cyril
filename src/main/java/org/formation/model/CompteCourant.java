@@ -132,6 +132,22 @@ public class CompteCourant implements Serializable {
 	public int getIdCompteCourant() {
 		return idCompteCourant;
 	}
+	
+	
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+
 
 
 	@Override

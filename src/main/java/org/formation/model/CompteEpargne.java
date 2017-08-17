@@ -119,6 +119,16 @@ public class CompteEpargne implements Serializable {
 	public int getIdCompteEpargne() {
 		return idCompteEpargne;
 	}
+	
+	
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	@Override
 	public String toString() {
