@@ -14,7 +14,7 @@
 	<title>Liste des clients</title>
 </h:head>
 <h:body>
-
+<h:form>
 	<p:dataTable var="tempClient" value="#{controlleur.clients}">
 		<p:column headerText="Id Client">
 			<h:outputText value="#{tempClient.idClient}" />
@@ -60,6 +60,6 @@
 <!-- 		<h:commandButton type="submit" value="Update" -->
 <!-- 			action="#{Controller.miseAJourInfosClient}" /> -->
 <!-- 	</p> -->
-
+</h:form>
 </h:body>
 </html>

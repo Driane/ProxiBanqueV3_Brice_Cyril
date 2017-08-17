@@ -78,18 +78,39 @@ public class Controlleur implements Serializable {
 		}
 	}
 
-	public String ajoutClient(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) {
-		LOGGER.info("Ajout client + compte courant + compte epargne : " + client + " - " + compteCourant + " - "
-				+ compteEpargne);
+//	public String ajoutClient(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) {
+//		LOGGER.info("Ajout client + compte courant + compte epargne : " + client + " - " + compteCourant + " - "
+//				+ compteEpargne);
+//
+//		try {
+//
+//			// add student to the database
+//			clientComptesService.ajouterClientComptes(client, compteCourant, compteEpargne);
+//
+//		} catch (Exception exc) {
+//			// send this to server logs
+//			LOGGER.error("Erreur ajout client et comptes", exc);
+//
+//			// add error message for JSF page
+//			addErrorMessage(exc);
+//
+//			return null;
+//		}
+//
+//		// return "list-students?faces-redirect=true";
+//		return "????????????????????????????";
+//	}
+	public String ajoutClient(Client client) {
+		LOGGER.info("Ajout client : " + client );
 
 		try {
 
 			// add student to the database
-			clientComptesService.ajouterClientComptes(client, compteCourant, compteEpargne);
+			clientComptesService.ajouterClient(client);
 
 		} catch (Exception exc) {
 			// send this to server logs
-			LOGGER.error("Erreur ajout client et comptes", exc);
+			LOGGER.error("Erreur ajout client", exc);
 
 			// add error message for JSF page
 			addErrorMessage(exc);
@@ -98,9 +119,8 @@ public class Controlleur implements Serializable {
 		}
 
 		// return "list-students?faces-redirect=true";
-		return "????????????????????????????";
+		return "listeClient";
 	}
-
 
 	public String buttonAction() {
 		return "accueil";
@@ -135,7 +155,8 @@ public class Controlleur implements Serializable {
 
 	public String miseAJourInfosClient(Client client) {
 
-		LOGGER.info("Mise à jour infos client : " + client);
+		LOGGER.debug("Mise à jour infos client : " + client);
+
 
 		try {
 
@@ -174,7 +195,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-		return "listeClient.xhtml";
+		return "listeClient";
 	}
 
 	public void listeCompteCourantClients() {
@@ -226,7 +247,13 @@ public class Controlleur implements Serializable {
 		return "???????????????????????";
 	}
 	
+	public String gotoClient() {
+		return "addClient";
+	}
 	
+	public String gotoListClient() {
+		return "listeClient";
+	}
 	public String miseAJourInfosCC(CompteCourant compteCourant) {
 
 		LOGGER.info("Mise à jour infos compte courant : " + compteCourant);
