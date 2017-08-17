@@ -12,9 +12,13 @@
 </head>
 <body>
 
-	<p:dataTable var="Id" value="#{dtBasicView.compte}">
+	<p:dataTable var="Compte" value="#{dtBasicView.compte}">
 		<p:column headerText="Id">
 			<h:outputText value="#{compte.idcompte}" />
+		</p:column>
+
+	<p:column headerText="Nom">
+			<h:outputText value="#{client.nom}" />
 		</p:column>
 
 		<p:column headerText="Solde">
