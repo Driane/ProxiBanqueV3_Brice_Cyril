@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,14 +16,20 @@ import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
 
-public class ClientComptesDao implements Serializable {
+@Named
+@ApplicationScoped
+public class ClientComptesDao implements Serializable, IClientComptesDao {
 
 
 	private static final long serialVersionUID = 1L;
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-pu");
 	
-	public List<Client> listeInfosClients() throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#listeInfosClients()
+	 */
+	@Override
+	public List<Client> listeInfosClientsDao() throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		List<Client> reList = new ArrayList<Client>();
@@ -44,7 +52,11 @@ public class ClientComptesDao implements Serializable {
 		return reList;
 	}
 	
-	public Client infoClient(int clientId) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#infoClient(int)
+	 */
+	@Override
+	public Client infoClientDao(int clientId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		Client client = new Client();
@@ -65,7 +77,11 @@ public class ClientComptesDao implements Serializable {
 		return client;
 	}
 	
-	public void ajouterClient(Client client) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#ajouterClient(org.formation.model.Client)
+	 */
+	@Override
+	public void ajouterClientDao(Client client) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
@@ -85,7 +101,11 @@ public class ClientComptesDao implements Serializable {
 
 	}
 	
-	public void miseAJourClient(Client client) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#miseAJourClient(org.formation.model.Client)
+	 */
+	@Override
+	public void miseAJourClientDao(Client client) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
@@ -104,7 +124,11 @@ public class ClientComptesDao implements Serializable {
 		}
 	}
 	
-	public void supprimerClient(int clientId) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#supprimerClient(int)
+	 */
+	@Override
+	public void supprimerClientDao(int clientId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
@@ -124,7 +148,11 @@ public class ClientComptesDao implements Serializable {
 		}
 	}
 	
-	public List<CompteCourant> listeInfosCompteCourant() throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#listeInfosCompteCourant()
+	 */
+	@Override
+	public List<CompteCourant> listeInfosCompteCourantDao() throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		List<CompteCourant> reList = new ArrayList<CompteCourant>();
@@ -147,7 +175,11 @@ public class ClientComptesDao implements Serializable {
 		return reList;
 	}
 	
-	public CompteCourant infoCompteCourant (int compteCourantId) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#infoCompteCourant(int)
+	 */
+	@Override
+	public CompteCourant infoCompteCourantDao (int compteCourantId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		CompteCourant compteCourant = new CompteCourant();
@@ -168,7 +200,11 @@ public class ClientComptesDao implements Serializable {
 		return compteCourant;
 	}
 	
-	public void miseAJourCompteCourant(CompteCourant compteCourant) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#miseAJourCompteCourant(org.formation.model.CompteCourant)
+	 */
+	@Override
+	public void miseAJourCompteCourantDao(CompteCourant compteCourant) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
@@ -187,7 +223,11 @@ public class ClientComptesDao implements Serializable {
 		}
 	}
 	
-	public List<CompteEpargne> listeInfosCompteEpargne() throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#listeInfosCompteEpargne()
+	 */
+	@Override
+	public List<CompteEpargne> listeInfosCompteEpargneDao() throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		List<CompteEpargne> reList = new ArrayList<CompteEpargne>();
@@ -210,7 +250,11 @@ public class ClientComptesDao implements Serializable {
 		return reList;
 	}
 	
-	public CompteEpargne infoCompteEpargne (int compteEpargneId) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#infoCompteEpargne(int)
+	 */
+	@Override
+	public CompteEpargne infoCompteEpargneDao (int compteEpargneId) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		CompteEpargne compteEpargne = new CompteEpargne();
@@ -231,7 +275,11 @@ public class ClientComptesDao implements Serializable {
 		return compteEpargne;
 	}
 	
-	public void miseAJourCompteEpargne(CompteEpargne compteEpargne) throws Exception {
+	/* (non-Javadoc)
+	 * @see org.formation.dao.IClientComptesDao#miseAJourCompteEpargne(org.formation.model.CompteEpargne)
+	 */
+	@Override
+	public void miseAJourCompteEpargneDao(CompteEpargne compteEpargne) throws Exception {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction txn = em.getTransaction();
 		try {
