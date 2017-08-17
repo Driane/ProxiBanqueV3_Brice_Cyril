@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Ajout Client</title>
+</h:head>
+<h:body>
+	<h:form>
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		<p:wizard flowListener="#{userWizard.onFlowProcess}">
+			<p:tab id="personal" title="Personal">
+				<p:panel header="Personal Details">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Nom *" />
+						<p:inputText value="#{userWizard.user.nom}" required="true"
+							label="Nom" />
+
+						<h:outputText value="Prenom *" />
+						<p:inputText value="#{userWizard.user.prenom}" required="true"
+							label="Prenom" />
+						<h:outputText value="Adresse " />
+						<p:inputText value="#{userWizard.user.adresse}" required="true" />
+
+						<h:outputText value="Code postal: " />
+						<p:inputText value="#{userWizard.user.codePostal}" />
+
+						<h:outputText value="Ville: " />
+						<p:inputText value="#{userWizard.user.ville}" />
+						<h:outputText value="Email: *" />
+						<p:inputText value="#{userWizard.user.email}" required="true"
+							label="Email" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="confirm" title="Confirmation">
+				<p:panel header="Confirmation">
+					<h:panelGrid id="confirmation" columns="3"
+						columnClasses="grid,grid,grid">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Nom " />
+							<h:outputText value="#{userWizard.user.nom}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Prénom: " />
+							<h:outputText value="#{userWizard.user.prenom}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Adresse: " />
+							<h:outputText value="#{userWizard.user.adresse}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Code postal: " />
+							<h:outputText value="#{userWizard.user.codePostal}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Ville: " />
+							<h:outputText value="#{userWizard.user.ville}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Email: " />
+							<h:outputText value="#{userWizard.user.email}"
+								styleClass="outputLabel" />
+
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<p:commandButton value="Submit" actionListener="#{Controller.gotoListeClient}"
+						update="growl"  />
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+
+	</h:form>
+</h:body>
+</html>

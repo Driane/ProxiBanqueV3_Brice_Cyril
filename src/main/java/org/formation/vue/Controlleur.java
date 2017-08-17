@@ -230,7 +230,13 @@ public class Controlleur implements Serializable {
 		return "???????????????????????";
 	}
 	
+	public String gotoClient() {
+		return "addClient";
+	}
 	
+	public String gotoListClient() {
+		return "listeClient";
+	}
 	public String miseAJourInfosCC(CompteCourant compteCourant) {
 
 		LOGGER.info("Mise à jour infos compte courant : " + compteCourant);
