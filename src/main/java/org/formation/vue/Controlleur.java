@@ -49,10 +49,12 @@ public class Controlleur implements Serializable {
 	}
 	
 	public List<CompteCourant> getCompteCourantClients() {
+		listeCompteCourantClients();
 		return compteCourantClients;
 	}
 	
 	public List<CompteEpargne> getCompteEpargneClients() {
+		listeCompteEpargneClients();
 		return compteEpargneClients;
 	}
 
@@ -185,7 +187,6 @@ public class Controlleur implements Serializable {
 		LOGGER.debug("Lister tous les comptes courant");
 		LOGGER.info("Information tous les comptes courant");
 
-		compteCourantClients.clear();
 
 		try {
 
@@ -259,7 +260,6 @@ public class Controlleur implements Serializable {
 		LOGGER.debug("Lister tous les comptes epargne");
 		LOGGER.info("Information tous les comptes epargne");
 
-		compteEpargneClients.clear();
 
 		try {
 
