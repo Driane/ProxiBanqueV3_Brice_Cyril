@@ -68,7 +68,6 @@ public class Controlleur implements Serializable {
 
 			// get all students from database
 			clients = clientComptesService.listeInfosClients();
-			System.out.println(clients.get(0));
 
 		} catch (Exception exc) {
 			// send this to server logs
@@ -131,9 +130,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "update-student-form.xhtml";
-		return "???????????????????????";
+		return "updateClient.xhtml";
 	}
 
 	public String miseAJourInfosClient(Client client) {
@@ -154,19 +151,19 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "list-students?faces-redirect=true";
-		return "????????????????????????";
+		return "listeClient?faces-redirect=true";
 	}
 
 	public String suppressionClient(int clientId) {
 
 		LOGGER.info("Suppression du client id : " + clientId);
+		System.out.println("On entre dans supprimer client");
 
 		try {
 
 			// delete the student from the database
 			clientComptesService.supprimerClient(clientId);
+			System.out.println("On a supprimer");
 
 		} catch (Exception exc) {
 			// send this to server logs
@@ -177,9 +174,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "list-students";
-		return "???????????????????";
+		return "listeClient.xhtml";
 	}
 
 	public void listeCompteCourantClients() {
