@@ -6,11 +6,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 	
-<head>
+<h:head>
 <meta charset="ISO-8859-1"/>
 <title>Liste des clients</title>
-</head>
-<body>
+</h:head>
+<h:body>
 
 	<p:dataTable var="tempClient" value="#{controlleur.clients}">
 		<p:column headerText="Id Client">
@@ -34,5 +34,5 @@
 		</p:column>
 	</p:dataTable>
 
-</body>
+</h:body>
 </html>
