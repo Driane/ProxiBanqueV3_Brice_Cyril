@@ -116,8 +116,6 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-
 		return "listeClient";
 	}
 

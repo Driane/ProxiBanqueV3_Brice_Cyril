@@ -54,11 +54,6 @@ public class Client implements Serializable {
 	private CompteEpargne compteEpargne;
 	
 
-	public Client(String nom, String prenom) {
-		super();
-		this.nom = nom.trim().toUpperCase();
-		this.prenom = prenom.trim().toLowerCase();
-	}
 
 	public Client(String nom, String prenom, String email, String adresse, String codePostal, String ville) {
 		super();

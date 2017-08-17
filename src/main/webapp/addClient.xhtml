@@ -75,7 +75,7 @@
 						</h:panelGrid>
 					</h:panelGrid>
 
-					<p:commandButton value="Submit" actionListener="#{controlleur.ajoutClient}"
+					<p:commandButton value="Submit" action="#{controlleur.ajoutClient(userWizard.user)}"
 						update="growl"  />
 				</p:panel>
 			</p:tab>
