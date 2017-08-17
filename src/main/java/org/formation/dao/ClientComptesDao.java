@@ -35,7 +35,7 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		List<Client> reList = new ArrayList<Client>();
 		try {
 			txn.begin();
-			String sql = "from client";
+			String sql = "from Client";
 			TypedQuery<Client> query = em.createQuery(sql, Client.class);
 			reList = query.getResultList();
 			txn.commit();
@@ -158,7 +158,7 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		List<CompteCourant> reList = new ArrayList<CompteCourant>();
 		try {
 			txn.begin();
-			String sql = "from compte_courant";
+			String sql = "from CompteCourant";
 			TypedQuery<CompteCourant> query = em.createQuery(sql, CompteCourant.class);
 			reList = query.getResultList();
 			txn.commit();
@@ -233,7 +233,7 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		List<CompteEpargne> reList = new ArrayList<CompteEpargne>();
 		try {
 			txn.begin();
-			String sql = "from compte_epargne";
+			String sql = "from CompteEpargne";
 			TypedQuery<CompteEpargne> query = em.createQuery(sql, CompteEpargne.class);
 			reList = query.getResultList();
 			txn.commit();

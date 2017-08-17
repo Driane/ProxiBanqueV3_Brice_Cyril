@@ -36,15 +36,15 @@ public class Controlleur implements Serializable {
 	private List<CompteEpargne> compteEpargneClients;
 	private static Logger LOGGER = LoggerFactory.getLogger(Controlleur.class);
 
-	public Controlleur() throws Exception {
-		super();
-		clients = new ArrayList<>();
-		compteCourantClients = new ArrayList<>();
-		compteEpargneClients = new ArrayList<>();
-		
-	}
+//	public Controlleur() throws Exception {
+//		super();
+//		clients = new ArrayList<>();
+//		compteCourantClients = new ArrayList<>();
+//		compteEpargneClients = new ArrayList<>();
+//	}
 	
 	public List<Client> getClients() {
+		loadClients();
 		return clients;
 	}
 	
@@ -56,17 +56,17 @@ public class Controlleur implements Serializable {
 		return compteEpargneClients;
 	}
 
-	public void listeClients() {
+	public void loadClients() {
 
 		LOGGER.debug("Lister les clients");
 		LOGGER.info("Information lister les clients");
 
-		clients.clear();
 
 		try {
 
 			// get all students from database
 			clients = clientComptesService.listeInfosClients();
+			System.out.println(clients.get(0));
 
 		} catch (Exception exc) {
 			// send this to server logs

@@ -6,11 +6,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
-<meta charset="ISO-8859-1" />
+
+	
+<h:head>
+<meta charset="ISO-8859-1"/>
+
 <title>Liste des clients</title>
-</head>
-<body>
+</h:head>
+<h:body>
 
 	<p:dataTable var="tempClient" value="#{controlleur.clients}">
 		<p:column headerText="Id Client">
@@ -40,5 +43,5 @@
 		<h:commandButton type="submit" value="Update" action="#{Controller.miseAJourInfosClient}"/>
 	</p>
 
-</body>
+</h:body>
 </html>
