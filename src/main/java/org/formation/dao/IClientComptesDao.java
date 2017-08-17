@@ -5,7 +5,13 @@ import java.util.List;
 import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
-
+/**
+ * 
+ * @author Brice Adelin/Cyril Rabineau
+ * 
+ * Interface de ClientComptesDAO
+ *
+ */
 public interface IClientComptesDao {
 
 	List<Client> listeInfosClientsDao() throws Exception;

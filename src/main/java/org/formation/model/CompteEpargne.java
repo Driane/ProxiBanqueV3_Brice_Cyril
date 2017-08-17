@@ -13,7 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author Brice Adelin/Cyril Rabineau
+ * Permet de créer un compté épargne à un client
+ */
 @Entity
 @ManagedBean
 @Table(name="compte_epargne")

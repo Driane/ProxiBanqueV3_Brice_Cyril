@@ -5,7 +5,12 @@ import java.util.List;
 import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
-
+/**
+ * 
+ * @author Brice Adelin / Rabineau Cyril
+ *
+ *Interface de ClientComptesService
+ */
 public interface IClientComptesService {
 
 	/* (non-Javadoc)

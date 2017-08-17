@@ -16,6 +16,12 @@ import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
 
+/**
+ * 
+ * @author Brice Adelin/Cyril Rabineau
+ *
+ *Ceci est la dao utilisée pour client et comptes
+ */
 @Named
 @ApplicationScoped
 public class ClientComptesDao implements Serializable, IClientComptesDao {
@@ -25,8 +31,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-pu");
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#listeInfosClients()
+	/**
+	 *  Méthode de listing des infos du client
 	 */
 	@Override
 	public List<Client> listeInfosClientsDao() throws Exception {
@@ -52,8 +58,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return reList;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#infoClient(int)
+	/**
+	 * Methode de récupération des infos du client 
 	 */
 	@Override
 	public Client infoClientDao(int clientId) throws Exception {
@@ -77,8 +83,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return client;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#ajouterClient(org.formation.model.Client)
+	/**
+	 * Methode permettant d'ajouter un client
 	 */
 	@Override
 	public void ajouterClientDao(Client client) throws Exception {
@@ -101,8 +107,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#miseAJourClient(org.formation.model.Client)
+	/**
+	 * Méthode permettant al mise à jour des infos d'un client
 	 */
 	@Override
 	public void miseAJourClientDao(Client client) throws Exception {
@@ -124,8 +130,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#supprimerClient(int)
+	/**
+	 * Methode permettant de supprimer un client
 	 */
 	@Override
 	public void supprimerClientDao(int clientId) throws Exception {
@@ -148,8 +154,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#listeInfosCompteCourant()
+	/**
+	 * Listing des infos des comptes courants
 	 */
 	@Override
 	public List<CompteCourant> listeInfosCompteCourantDao() throws Exception {
@@ -175,8 +181,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return reList;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#infoCompteCourant(int)
+	/**
+	 * Methode de récupération des infos des comptes courant
 	 */
 	@Override
 	public CompteCourant infoCompteCourantDao (int compteCourantId) throws Exception {
@@ -200,8 +206,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return compteCourant;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#miseAJourCompteCourant(org.formation.model.CompteCourant)
+	/**
+	 * Methode de mise a jour des comptes courant
 	 */
 	@Override
 	public void miseAJourCompteCourantDao(CompteCourant compteCourant) throws Exception {
@@ -223,8 +229,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#listeInfosCompteEpargne()
+	/**
+	 * Listing des infos des comptes épargne
 	 */
 	@Override
 	public List<CompteEpargne> listeInfosCompteEpargneDao() throws Exception {
@@ -250,8 +256,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return reList;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#infoCompteEpargne(int)
+	/**
+	 * Methode de réupération des infos des comptes épargne
 	 */
 	@Override
 	public CompteEpargne infoCompteEpargneDao (int compteEpargneId) throws Exception {
@@ -275,8 +281,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		return compteEpargne;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.formation.dao.IClientComptesDao#miseAJourCompteEpargne(org.formation.model.CompteEpargne)
+	/**
+	 * Methode de mise a jour des comptes epargnes
 	 */
 	@Override
 	public void miseAJourCompteEpargneDao(CompteEpargne compteEpargne) throws Exception {
