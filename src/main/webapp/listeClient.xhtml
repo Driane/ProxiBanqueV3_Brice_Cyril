@@ -5,9 +5,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 <head>
-<meta charset="ISO-8859-1"/>
+<meta charset="ISO-8859-1" />
 <title>Liste des clients</title>
 </head>
 <body>
@@ -33,6 +33,12 @@
 			<h:outputText value="#{tempClient.email}" />
 		</p:column>
 	</p:dataTable>
+	<p>
+		<h:commandButton type="submit" value="Supprimer" action="#{Controller.suppressionClient}"/>
+	</p>
+	<p>
+		<h:commandButton type="submit" value="Update" action="#{Controller.miseAJourInfosClient}"/>
+	</p>
 
 </body>
 </html>
