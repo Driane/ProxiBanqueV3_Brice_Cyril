@@ -1,10 +1,13 @@
 package org.formation.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +23,7 @@ public class CompteEpargne implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idCompteEpargne", nullable = false, unique = true)
 	private int idCompteEpargne;
 	
 	double tauxRemuneration = 0.03;
@@ -27,25 +31,29 @@ public class CompteEpargne implements Serializable {
 	private Date dateOuvertureCompteEpargne;
 	private String numeroCompteEpargne;
 	
-	@OneToOne(mappedBy = "compteEpargne")
+	@OneToOne(mappedBy = "compteEpargne", fetch=FetchType.EAGER)
 	private Client client;
 
 
-
-	public CompteEpargne(double soldeCompteEpargne, Date dateOuvertureCompteEpargne, String numeroCompteEpargne) {
+	public CompteEpargne(double soldeCompteEpargne, Date dateOuvertureCompteEpargne, Client client) {
 		super();
 		this.soldeCompteEpargne = soldeCompteEpargne;
 		this.dateOuvertureCompteEpargne = dateOuvertureCompteEpargne;
-		this.numeroCompteEpargne = numeroCompteEpargne;
+		this.client = client;
+		this.numeroCompteEpargne = creationNumeroCompteEpargne(client, dateOuvertureCompteEpargne);
+	}
+	
+	public CompteEpargne(double soldeCompteEpargne, Date dateOuvertureCompteEpargne) {
+		super();
+		this.soldeCompteEpargne = soldeCompteEpargne;
+		this.dateOuvertureCompteEpargne = dateOuvertureCompteEpargne;
 	}
 
-	public CompteEpargne(double tauxRemuneration, double soldeCompteEpargne, Date dateOuvertureCompteEpargne,
-			String numeroCompteEpargne) {
+	public CompteEpargne(double tauxRemuneration, double soldeCompteEpargne, Date dateOuvertureCompteEpargne) {
 		super();
 		this.tauxRemuneration = tauxRemuneration;
 		this.soldeCompteEpargne = soldeCompteEpargne;
 		this.dateOuvertureCompteEpargne = dateOuvertureCompteEpargne;
-		this.numeroCompteEpargne = numeroCompteEpargne;
 	}
 
 	public CompteEpargne() {
@@ -76,6 +84,28 @@ public class CompteEpargne implements Serializable {
 
 	public void setNumeroCompteEpargne(String numeroCompteEpargne) {
 		this.numeroCompteEpargne = numeroCompteEpargne;
+	}
+	
+	public String creationNumeroCompteEpargne(Client client, Date dateOuvertureCompteEpargne) {
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(dateOuvertureCompteEpargne);
+	    int year = cal.get(Calendar.YEAR);
+	    int month = cal.get(Calendar.MONTH);
+	    int day = cal.get(Calendar.DAY_OF_MONTH);
+	    int min = cal.get(Calendar.MINUTE);
+	    int sec = cal.get(Calendar.SECOND);
+		StringBuilder sb = new StringBuilder();
+		sb.append(client.getNom().substring(0, 1).toUpperCase());
+		sb.append(client.getPrenom().substring(0, 1).toUpperCase());
+		sb.append("-");
+		sb.append(year);
+		sb.append(month);
+		sb.append(day);
+		sb.append(min);
+		sb.append(sec);
+		sb.append("-CC");
+		String nouveauNumeroCompteEpargne = sb.toString();
+		return nouveauNumeroCompteEpargne;
 	}
 
 	public double getTauxRemuneration() {

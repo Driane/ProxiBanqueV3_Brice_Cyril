@@ -1,10 +1,13 @@
 package org.formation.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +23,7 @@ public class CompteCourant implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idCompteCourant", nullable = false, unique = true)
 	private int idCompteCourant;
 	
 	private double autorisationDecouvert = -1000;
@@ -27,26 +31,36 @@ public class CompteCourant implements Serializable {
 	private Date dateOuvertureCompteCourant;
 	private String numeroCompteCourant;
 	
-	@OneToOne(mappedBy = "compteCourant")
+	@OneToOne(mappedBy = "compteCourant", fetch=FetchType.EAGER)
 	private Client client;
 	
 
+
 	
-	public CompteCourant(double soldeCompteCourant, Date dateOuvertureCompteCourant, String numeroCompteCourant) {
+	
+	public CompteCourant(double soldeCompteCourant, Date dateOuvertureCompteCourant, Client client) {
 		super();
 		this.soldeCompteCourant = soldeCompteCourant;
 		this.dateOuvertureCompteCourant = dateOuvertureCompteCourant;
-		this.numeroCompteCourant = numeroCompteCourant;
+		this.client = client;
+		this.numeroCompteCourant = creationNumeroCompteCourant(client, dateOuvertureCompteCourant);
 	}
 
 
-	public CompteCourant(double autorisationDecouvert, double soldeCompteCourant, Date dateOuvertureCompteCourant,
-			String numeroCompteCourant) {
+
+
+	public CompteCourant(double soldeCompteCourant, Date dateOuvertureCompteCourant) {
+		super();
+		this.soldeCompteCourant = soldeCompteCourant;
+		this.dateOuvertureCompteCourant = dateOuvertureCompteCourant;
+	}
+
+
+	public CompteCourant(double autorisationDecouvert, double soldeCompteCourant, Date dateOuvertureCompteCourant) {
 		super();
 		this.autorisationDecouvert = autorisationDecouvert;
 		this.soldeCompteCourant = soldeCompteCourant;
 		this.dateOuvertureCompteCourant = dateOuvertureCompteCourant;
-		this.numeroCompteCourant = numeroCompteCourant;
 	}
 
 
@@ -84,6 +98,28 @@ public class CompteCourant implements Serializable {
 		this.numeroCompteCourant = numeroCompteCourant;
 	}
 
+	public String creationNumeroCompteCourant(Client client, Date dateOuvertureCompteCourant) {
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(dateOuvertureCompteCourant);
+	    int year = cal.get(Calendar.YEAR);
+	    int month = cal.get(Calendar.MONTH);
+	    int day = cal.get(Calendar.DAY_OF_MONTH);
+	    int min = cal.get(Calendar.MINUTE);
+	    int sec = cal.get(Calendar.SECOND);
+		StringBuilder sb = new StringBuilder();
+		sb.append(client.getNom().substring(0, 1).toUpperCase());
+		sb.append(client.getPrenom().substring(0, 1).toUpperCase());
+		sb.append("-");
+		sb.append(year);
+		sb.append(month);
+		sb.append(day);
+		sb.append(min);
+		sb.append(sec);
+		sb.append("-CC");
+		String nouveauNumeroCompteCourant = sb.toString();
+		return nouveauNumeroCompteCourant;
+	}
+	
 
 	public double getAutorisationDecouvert() {
 		return autorisationDecouvert;

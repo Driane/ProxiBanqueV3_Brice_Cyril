@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,7 @@ public class Client implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idClient", nullable = false, unique = true)
 	private int idClient;
 	
 	private String nom;
@@ -34,25 +37,25 @@ public class Client implements Serializable {
 	private String codePostal;
 	private String ville;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="comptecourant_client", unique=true)
 	private CompteCourant compteCourant;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="compteepargne_client", unique=true)
 	private CompteEpargne compteEpargne;
 	
 
 	public Client(String nom, String prenom) {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
+		this.nom = nom.trim().toUpperCase();
+		this.prenom = prenom.trim().toLowerCase();
 	}
 
 	public Client(String nom, String prenom, String email, String adresse, String codePostal, String ville) {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
+		this.nom = nom.trim().toUpperCase();
+		this.prenom = prenom.trim().toLowerCase();
 		this.email = email;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
@@ -69,7 +72,7 @@ public class Client implements Serializable {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom = nom.trim().toUpperCase();
 	}
 
 	public String getPrenom() {
@@ -77,7 +80,7 @@ public class Client implements Serializable {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		this.prenom = prenom.trim().toLowerCase();
 	}
 
 	public String getEmail() {

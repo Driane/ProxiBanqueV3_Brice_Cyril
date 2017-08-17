@@ -47,6 +47,12 @@ public class ClientComptesService implements Serializable, IClientComptesService
 		clientComptesDao.ajouterClientDao(client);
 	}
 	
+	public void ajouterClientComptes(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) throws Exception {
+		client.setCompteCourant(compteCourant);
+		client.setCompteEpargne(compteEpargne);
+		clientComptesDao.ajouterClientDao(client);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.formation.service.IClientComptesService#miseAJourClient(org.formation.model.Client)
 	 */
