@@ -18,7 +18,7 @@
 <!--         <p:messages id="messages" /> -->
 <!--         <h:panelGrid columns="3" cellpadding="5"> -->
 <!--             <h:outputLabel for="login" value="Login: *" /> -->
-<!--             <p:inputText id="login" value="#{blockUIView.login}" required="true" label="Login"> -->
+<!--             <p:inputText id="login" method="POST" action="j_security_check" required="true" label="Login"> -->
 <!--                 <f:validateLength minimum="6" /> -->
 <!--             </p:inputText> -->
 <!--             <p:message for="login" /> -->
@@ -42,7 +42,7 @@
                 <input type="password" size="15" name="j_password"/></p>
             <p>
                 <input type="submit" value="Submit"/>
-                <input type="reset" value="Reset"/></p>
+			</p>
         </form>      
 </h:body>
 </html>
