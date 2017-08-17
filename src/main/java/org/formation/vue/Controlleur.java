@@ -72,7 +72,6 @@ public class Controlleur implements Serializable {
 
 			// get all students from database
 			clients = clientComptesService.listeInfosClients();
-			System.out.println(clients.get(0));
 
 		} catch (Exception exc) {
 			// send this to server logs
@@ -83,18 +82,39 @@ public class Controlleur implements Serializable {
 		}
 	}
 
-	public String ajoutClient(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) {
-		LOGGER.info("Ajout client + compte courant + compte epargne : " + client + " - " + compteCourant + " - "
-				+ compteEpargne);
+//	public String ajoutClient(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) {
+//		LOGGER.info("Ajout client + compte courant + compte epargne : " + client + " - " + compteCourant + " - "
+//				+ compteEpargne);
+//
+//		try {
+//
+//			// add student to the database
+//			clientComptesService.ajouterClientComptes(client, compteCourant, compteEpargne);
+//
+//		} catch (Exception exc) {
+//			// send this to server logs
+//			LOGGER.error("Erreur ajout client et comptes", exc);
+//
+//			// add error message for JSF page
+//			addErrorMessage(exc);
+//
+//			return null;
+//		}
+//
+//		// return "list-students?faces-redirect=true";
+//		return "????????????????????????????";
+//	}
+	public String ajoutClient(Client client) {
+		LOGGER.info("Ajout client : " + client );
 
 		try {
 
 			// add student to the database
-			clientComptesService.ajouterClientComptes(client, compteCourant, compteEpargne);
+			clientComptesService.ajouterClient(client);
 
 		} catch (Exception exc) {
 			// send this to server logs
-			LOGGER.error("Erreur ajout client et comptes", exc);
+			LOGGER.error("Erreur ajout client", exc);
 
 			// add error message for JSF page
 			addErrorMessage(exc);
@@ -103,9 +123,8 @@ public class Controlleur implements Serializable {
 		}
 
 		// return "list-students?faces-redirect=true";
-		return "????????????????????????????";
+		return "listeClient";
 	}
-
 
 	public String buttonAction() {
 		return "accueil";
@@ -135,14 +154,13 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "update-student-form.xhtml";
-		return "???????????????????????";
+		return "updateClient.xhtml";
 	}
 
 	public String miseAJourInfosClient(Client client) {
 
-		LOGGER.info("Mise à jour infos client : " + client);
+		LOGGER.debug("Mise à jour infos client : " + client);
+
 
 		try {
 
@@ -158,19 +176,19 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "list-students?faces-redirect=true";
-		return "????????????????????????";
+		return "listeClient?faces-redirect=true";
 	}
 
 	public String suppressionClient(int clientId) {
 
 		LOGGER.info("Suppression du client id : " + clientId);
+		System.out.println("On entre dans supprimer client");
 
 		try {
 
 			// delete the student from the database
 			clientComptesService.supprimerClient(clientId);
+			System.out.println("On a supprimer");
 
 		} catch (Exception exc) {
 			// send this to server logs
@@ -181,9 +199,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-
-		// return "list-students";
-		return "???????????????????";
+		return "listeClient";
 	}
 
 	public void listeCompteCourantClients() {

@@ -7,14 +7,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-	
-<h:head>
-<meta charset="ISO-8859-1"/>
 
-<title>Liste des clients</title>
+<h:head>
+	<meta charset="ISO-8859-1" />
+
+	<title>Liste des clients</title>
 </h:head>
 <h:body>
-
+<h:form>
 	<p:dataTable var="tempClient" value="#{controlleur.clients}">
 		<p:column headerText="Id Client">
 			<h:outputText value="#{tempClient.idClient}" />
@@ -35,13 +35,31 @@
 		<p:column headerText="Email">
 			<h:outputText value="#{tempClient.email}" />
 		</p:column>
-	</p:dataTable>
-	<p>
-		<h:commandButton type="submit" value="Supprimer" action="#{Controller.suppressionClient}"/>
-	</p>
-	<p>
-		<h:commandButton type="submit" value="Update" action="#{Controller.miseAJourInfosClient}"/>
-	</p>
 
+		<p:column headerText="Action">
+			
+
+			<!--  the value for each row -->
+			
+			<p:commandButton type="submit" id="updateClient" value="Update client"
+			
+			action="#{controlleur.detailClient(tempClient.idClient)}" />
+			
+					|<p:commandButton type="submit" id="supprimerClient" value="Supprimer client"
+					onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
+			action="#{controlleur.suppressionClient(tempClient.idClient)}" />
+
+
+		</p:column>
+	</p:dataTable>
+<!-- 	<p> -->
+<!-- 		<h:commandButton type="submit" value="Supprimer" -->
+<!-- 			action="#{Controller.suppressionClient}" /> -->
+<!-- 	</p> -->
+<!-- 	<p> -->
+<!-- 		<h:commandButton type="submit" value="Update" -->
+<!-- 			action="#{Controller.miseAJourInfosClient}" /> -->
+<!-- 	</p> -->
+</h:form>
 </h:body>
 </html>
