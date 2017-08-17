@@ -17,17 +17,17 @@
         <p:messages id="messages" />
         <h:panelGrid columns="3" cellpadding="5">
             <h:outputLabel for="login" value="Login: *" />
-            <p:inputText id="login" value="#{blockUIView.login}" required="true" label="Login">
+            <p:inputText id="login" value="#{PasswordView.login}" required="true" label="Login">
                 <f:validateLength minimum="6" />
             </p:inputText>
             <p:message for="login" />
  
             <h:outputLabel for="password" value="Password: *" />
-            <p:inputText id="password" value="#{blockUIView.password}" required="true" label="Password"/>
+            <p:password id="password" value="#{PasswordView.password}" required="true" label="Password"/>
             <p:message for="password" />
         </h:panelGrid>
  
-        <p:commandButton id="logBtn" value="Se connecter" icon="ui-icon-check" style="margin:0" actionListener="#{blockUIView.log}" update="growl"/>
+        <h:commandButton id="logBtn" value="Se connecter" action="#{Controller.buttonAction()}" icon="ui-icon-check" style="margin:0" update="growl"/>
     </p:panel>
  
     <p:blockUI block="pnl" trigger="logBtn" />

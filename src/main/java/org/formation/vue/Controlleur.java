@@ -36,7 +36,9 @@ public class Controlleur implements Serializable {
 		super();
 	}
 
-	
+	public String buttonAction() {
+		return "accueil";
+	}
 	
 	
 }

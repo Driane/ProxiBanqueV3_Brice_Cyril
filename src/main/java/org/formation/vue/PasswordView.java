@@ -5,9 +5,14 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class PasswordView {
         
-	private String password = "admin";  
+	private String password = "admin";
+	private String login = "admin";
  
-    public String getPassword() {
+    public String getLogin() {
+		return login;
+	}
+
+	public String getPassword() {
         return password;
     }
  
