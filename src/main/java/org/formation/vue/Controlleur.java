@@ -36,12 +36,7 @@ public class Controlleur implements Serializable {
 	private List<CompteEpargne> compteEpargneClients;
 	private static Logger LOGGER = LoggerFactory.getLogger(Controlleur.class);
 
-//	public Controlleur() throws Exception {
-//		super();
-//		clients = new ArrayList<>();
-//		compteCourantClients = new ArrayList<>();
-//		compteEpargneClients = new ArrayList<>();
-//	}
+
 	
 	public List<Client> getClients() {
 		loadClients();
@@ -66,7 +61,7 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// get all students from database
+
 			clients = clientComptesService.listeInfosClients();
 
 		} catch (Exception exc) {
@@ -105,7 +100,7 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// add student to the database
+
 			clientComptesService.ajouterClient(client);
 
 		} catch (Exception exc) {
@@ -118,7 +113,7 @@ public class Controlleur implements Serializable {
 			return null;
 		}
 
-		// return "list-students?faces-redirect=true";
+
 		return "listeClient";
 	}
 
@@ -129,17 +124,19 @@ public class Controlleur implements Serializable {
 	public String detailClient(int clientId) {
 
 		LOGGER.info("Infos client : " + clientId);
+		System.out.println("On est dans details");
 
 		try {
-			// get student from database
+
 			Client client = clientComptesService.infoClient(clientId);
+			System.out.println("Client detail : " + client);
 
 			// put in the request attribute ... so we can use it on the form
 			// page
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
 			Map<String, Object> requestMap = externalContext.getRequestMap();
-			requestMap.put("Client", client);
+			requestMap.put("client", client);
 
 		} catch (Exception exc) {
 			// send this to server logs
@@ -159,8 +156,7 @@ public class Controlleur implements Serializable {
 
 
 		try {
-
-			// update student in the database
+			System.out.println("Client update : " + client);
 			clientComptesService.miseAJourClient(client);
 
 		} catch (Exception exc) {
@@ -182,7 +178,6 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// delete the student from the database
 			clientComptesService.supprimerClient(clientId);
 			System.out.println("On a supprimer");
 
@@ -206,7 +201,6 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// get all students from database
 			compteCourantClients = clientComptesService.listeInfosCompteCourant();
 
 		} catch (Exception exc) {
@@ -223,7 +217,6 @@ public class Controlleur implements Serializable {
 		LOGGER.info("Infos compte courant client : " + compteCourantId);
 
 		try {
-			// get student from database
 			CompteCourant cc = clientComptesService.infoCompteCourant(compteCourantId);
 
 			// put in the request attribute ... so we can use it on the form
@@ -244,7 +237,7 @@ public class Controlleur implements Serializable {
 		}
 
 		// return "update-student-form.xhtml";
-		return "???????????????????????";
+		return "listeClient";
 	}
 	
 	public String gotoClient() {
@@ -260,7 +253,6 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// update student in the database
 			clientComptesService.miseAJourCompteCourant(compteCourant);
 
 		} catch (Exception exc) {
@@ -273,8 +265,7 @@ public class Controlleur implements Serializable {
 			return null;
 		}
 
-		// return "list-students?faces-redirect=true";
-		return "????????????????????????";
+		return "listeClient?faces-redirect=true";
 	}
 	
 	public void listeCompteEpargneClients() {
@@ -285,7 +276,6 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// get all students from database
 			compteEpargneClients = clientComptesService.listeInfosCompteEpargne();
 
 		} catch (Exception exc) {
@@ -322,8 +312,7 @@ public class Controlleur implements Serializable {
 			return null;
 		}
 
-		// return "update-student-form.xhtml";
-		return "???????????????????????";
+		return "listeClient";
 	}
 	
 	
@@ -333,7 +322,6 @@ public class Controlleur implements Serializable {
 
 		try {
 
-			// update student in the database
 			clientComptesService.miseAJourCompteEpargne(compteEpargne);
 
 		} catch (Exception exc) {
@@ -346,8 +334,7 @@ public class Controlleur implements Serializable {
 			return null;
 		}
 
-		// return "list-students?faces-redirect=true";
-		return "????????????????????????";
+		return "listeClient?faces-redirect=true";
 	}
 
 	
@@ -358,11 +345,11 @@ public class Controlleur implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
-	public String logOut() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = facesContext.getExternalContext();
-		externalContext.invalidateSession();
-		return "?????????";
-	}
+//	public String logOut() {
+//		FacesContext facesContext = FacesContext.getCurrentInstance();
+//		ExternalContext externalContext = facesContext.getExternalContext();
+//		externalContext.invalidateSession();
+//		return "?????????";
+//	}
 
 }

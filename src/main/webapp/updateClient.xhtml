@@ -41,16 +41,16 @@
 									required="true"
             							requiredMessage="Your email is mandatory."/> 	<h:message for="email"  />
 				
-				 <h:inputHidden value="#{client.idClient}" />
 				
-				 <h:commandButton value="Save" styleClass="save" action="#{controlleur.miseAJourInfosClient(client)}"/>
+				 <p:commandButton type="submit" id="sauvegarderClient" value="Sauvegarder" styleClass="save" action="#{controlleur.miseAJourInfosClient(client)}"/>
+				 
 			
 			</h:panelGrid>
 		</h:form>
 
 		<div style="clear: both;"></div>
 
-		<p><h:outputLink value="list-students.xhtml">Back to List</h:outputLink></p>
+		<p><h:outputLink value="accueil.xhtml">Retour à l'acceuil</h:outputLink></p>
 
 </h:body>
 </html>
