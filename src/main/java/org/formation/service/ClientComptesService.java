@@ -48,6 +48,7 @@ public class ClientComptesService implements Serializable, IClientComptesService
 	}
 	
 
+	@Override
 	public void ajouterClientComptes(Client client, CompteCourant compteCourant, CompteEpargne compteEpargne) throws Exception {
 		client.setCompteCourant(compteCourant);
 		client.setCompteEpargne(compteEpargne);
