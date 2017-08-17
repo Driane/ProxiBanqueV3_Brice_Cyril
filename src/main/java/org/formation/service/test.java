@@ -14,6 +14,7 @@ public class test {
 
 		IClientComptesDao dao = new ClientComptesDao();
 		
+
 	
 		Date date1 = new Date();
 		
@@ -38,6 +39,7 @@ public class test {
 		dao.ajouterClientDao(client1);
 		dao.ajouterClientDao(client2);
 		dao.ajouterClientDao(client3);
+
 	}
 
 }

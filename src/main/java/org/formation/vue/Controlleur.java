@@ -8,6 +8,9 @@ import javax.inject.Named;
 
 import org.formation.service.IClientComptesService;
 
+
+
+
 @Named
 @ApplicationScoped
 public class Controlleur implements Serializable {
@@ -16,5 +19,6 @@ public class Controlleur implements Serializable {
 
 	@Inject
 	private IClientComptesService clientComptesService;
+
 	
 }
