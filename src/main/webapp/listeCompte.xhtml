@@ -8,21 +8,44 @@
 	
 <head>
 <meta charset="ISO-8859-1"/>
-<title>Liste comptes</title>
+<title>Liste des comptes</title>
 </head>
 <body>
 
-	<p:dataTable var="Compte" value="#{dtBasicView.compte}">
-		<p:column headerText="Id">
-			<h:outputText value="#{compte.idcompte}" />
+	<p:dataTable var="tempcompteCourant" value="#{controlleur.compteCourantClients}">
+		<p:column headerText="Numero compte courant">
+			<h:outputText value="#{tempcompteCourant.numeroCompteCourant}" />
 		</p:column>
 
 	<p:column headerText="Nom">
-			<h:outputText value="#{client.nom}" />
+			<h:outputText value="#{tempcompteCourant.client.nom}" />
+		</p:column>
+		
+		<p:column headerText="Prenom">
+			<h:outputText value="#{tempcompteCourant.client.prenom}" />
 		</p:column>
 
-		<p:column headerText="Solde">
-			<h:outputText value="#{compte.solde}" />
+		<p:column headerText="Solde compte courant">
+			<h:outputText value="#{tempcompteCourant.soldeCompteCourant}" />
+		</p:column>
+
+	</p:dataTable>
+	
+	<p:dataTable var="tempcompteEpargne" value="#{controlleur.compteEpargneClients}">
+		<p:column headerText="Numero compte epargne">
+			<h:outputText value="#{tempcompteEpargne.numeroCompteEpargne}" />
+		</p:column>
+
+	<p:column headerText="Nom">
+			<h:outputText value="#{tempcompteEpargne.client.nom}" />
+		</p:column>
+		
+		<p:column headerText="Prenom">
+			<h:outputText value="#{tempcompteEpargne.client.prenom}" />
+		</p:column>
+
+		<p:column headerText="Solde compte epargne">
+			<h:outputText value="#{tempcompteEpargne.soldeCompteEpargne}" />
 		</p:column>
 
 	</p:dataTable>

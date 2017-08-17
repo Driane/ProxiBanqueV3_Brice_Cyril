@@ -8,29 +8,29 @@
 	
 <head>
 <meta charset="ISO-8859-1"/>
-<title>Liste clients</title>
+<title>Liste des clients</title>
 </head>
 <body>
 
-	<p:dataTable var="Id" value="#{dtBasicView.client}">
-		<p:column headerText="Id">
-			<h:outputText value="#{client.idClient}" />
+	<p:dataTable var="tempClient" value="#{controlleur.clients}">
+		<p:column headerText="Id Client">
+			<h:outputText value="#{tempClient.idClient}" />
 		</p:column>
 
 		<p:column headerText="Nom">
-			<h:outputText value="#{client.nom}" />
+			<h:outputText value="#{tempClient.nom}" />
 		</p:column>
 
 		<p:column headerText="Prenom">
-			<h:outputText value="#{client.prenom}" />
+			<h:outputText value="#{tempClient.prenom}" />
 		</p:column>
 
 		<p:column headerText="Adresse">
-			<h:outputText value="#{client.adresse}" />
+			<h:outputText value="#{tempClient.adresse}" />
 		</p:column>
 
 		<p:column headerText="Email">
-			<h:outputText value="#{client.email}" />
+			<h:outputText value="#{tempClient.email}" />
 		</p:column>
 	</p:dataTable>
 

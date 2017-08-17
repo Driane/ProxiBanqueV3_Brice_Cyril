@@ -43,6 +43,18 @@ public class Controlleur implements Serializable {
 		compteEpargneClients = new ArrayList<>();
 		
 	}
+	
+	public List<Client> getClients() {
+		return clients;
+	}
+	
+	public List<CompteCourant> getCompteCourantClients() {
+		return compteCourantClients;
+	}
+	
+	public List<CompteEpargne> getCompteEpargneClients() {
+		return compteEpargneClients;
+	}
 
 	public void listeClients() {
 
