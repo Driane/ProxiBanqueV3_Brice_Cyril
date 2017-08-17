@@ -21,7 +21,11 @@ import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
 import org.formation.service.IClientComptesService;
-
+/**
+ * 
+ * @author Brice Adelin/ Cyril Rabineau
+ *
+ */
 @Named
 @ApplicationScoped
 public class Controlleur implements Serializable {

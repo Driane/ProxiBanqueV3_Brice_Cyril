@@ -3,7 +3,11 @@ package org.formation.vue;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
- 
+ /**
+  * 
+  * @author Brice Adelin / Cyril Rabineau	
+  *
+  */
 @ManagedBean
 @ViewScoped
 public class InputNumberView {

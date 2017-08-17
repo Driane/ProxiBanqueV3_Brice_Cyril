@@ -8,7 +8,11 @@ import javax.faces.context.FacesContext;
 
 import org.formation.model.Client;
 import org.primefaces.event.FlowEvent;
- 
+ /**
+  * 
+  * @author Brice Adelin / Cyril Rabineau
+  *
+  */
 @ManagedBean
 @ViewScoped
 public class UserWizard implements Serializable {

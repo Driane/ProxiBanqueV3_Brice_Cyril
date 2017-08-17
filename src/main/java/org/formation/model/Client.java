@@ -14,7 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
+/**
+ * 
+ * @author Brice Adelin/Cyril Rabineau
+ *
+ * Bean principale de Client avec ses variables, les getters/setters et une methode TO_String
+ */
 
 @Entity
 @ManagedBean
@@ -24,6 +29,9 @@ public class Client implements Serializable {
 
 	private static final long serialVersionUID = -2524331431768668681L;
 
+	/**
+	 * Genere les variables de la classe Client
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idClient", nullable = false, unique = true)

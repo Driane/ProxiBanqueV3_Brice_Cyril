@@ -1,7 +1,11 @@
 package org.formation.vue;
 
 import javax.faces.bean.ManagedBean;
-
+/**
+ * 
+ * @author Brice Adelin / Cyril Rabineau
+ *
+ */
 @ManagedBean
 public class PasswordView {
         

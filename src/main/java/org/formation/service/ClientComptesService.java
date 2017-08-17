@@ -11,7 +11,11 @@ import org.formation.dao.IClientComptesDao;
 import org.formation.model.Client;
 import org.formation.model.CompteCourant;
 import org.formation.model.CompteEpargne;
-
+/**
+ * 
+ * @author Brice Adelin/Cyril Rabineau
+ * La couche service pour client et compte
+ */
 @Named
 @ApplicationScoped
 public class ClientComptesService implements Serializable, IClientComptesService {
