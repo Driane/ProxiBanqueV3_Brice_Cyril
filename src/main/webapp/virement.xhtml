@@ -5,14 +5,103 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" />
 <title>Gestionnaire de virements</title>
 </head>
 <body>
 
+	<p:dataTable var="Comptecredit" value="#{dtBasicView.compte}">
+		<p:column headerText="Id">
+			<h:outputText value="#{compte.idcompte}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{client.nom}" />
+		</p:column>
+
+		<p:column headerText="Solde">
+			<h:outputText value="#{compte.solde}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<p:dataTable var="Comptedebit" value="#{dtBasicView.compte}">
+		<p:column headerText="Id">
+			<h:outputText value="#{compte.idcompte}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{client.nom}" />
+		</p:column>
+
+		<p:column headerText="Solde">
+			<h:outputText value="#{compte.solde}" />
+		</p:column>
+
+	</p:dataTable>
+	<p:row>
+	<p/>
+		<p:column>
+			<p:inputNumber id="debit" value="#{inputNumberView.debit}"
+				minValue="0">
+				<p:ajax update="debitCompte" />
+			</p:inputNumber>
+		</p:column>
+		<p:column>
+			<p:inputText id="debitCompte" required="true"
+				value="#{inputNumberView.debit}" />
+		</p:column>
+		<p:column>  
+                Entrer le numéro de compte à débiter
+            </p:column>
+
+
+	</p:row>
 	
+	<p/>
+		<p:row>
+		<p:column>
+			<p:inputNumber id="credit" value="#{inputNumberView.credit}"
+				minValue="0">
+				<p:ajax update="creditCompte" />
+			</p:inputNumber>
+		</p:column>
+		<p:column>
+			<p:inputText id="creditCompte" required="true"
+				value="#{inputNumberView.credit}" />
+		</p:column>
+		<p:column>  
+                Entrer le numéro de compte à créditer
+            </p:column>
+
+	</p:row>
 	
+	<p:row>
+	<p/>
+		<p:column>
+			<p:inputNumber id="montant" value="#{inputNumberView.montant}"
+				minValue="0">
+				<p:ajax update="output" />
+			</p:inputNumber>
+		</p:column>
+		<p:column>
+			<p:inputText id="output" required="true"
+				value="#{inputNumberView.montant}" />
+		</p:column>
+		<p:column>  
+                Entrer le montant à transferer
+            </p:column>
+		<h:form>
+			<p:growl id="growl" life="2000" />
+			<p:link outcome="accueil.xhtml">
+			<p:commandButton value="Transferer" id="transfer" update="growl"
+				actionListener="#{InputNumberView.buttonAction}"
+				styleClass="ui-priority-primary" />
+		    </p:link>
+		</h:form>
+	</p:row>
+
 </body>
 </html>
