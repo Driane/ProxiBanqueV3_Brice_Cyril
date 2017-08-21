@@ -69,7 +69,7 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/WEB-INF/login.xhtml</form-login-page>
+			<form-login-page>/WEB-INF/login.html</form-login-page>
 			<form-error-page>/error.xhtml</form-error-page>
 		</form-login-config>
 	</login-config>
