@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,12 +14,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.SelectBeforeUpdate;
 /**
  * 
  * @author Brice Adelin/Cyril Rabineau
  *Permet de créer un compte courant d'un client
  */
 @Entity
+@SelectBeforeUpdate
 @ManagedBean
 @Table(name="compte_courant")
 public class CompteCourant implements Serializable {
@@ -31,11 +35,11 @@ public class CompteCourant implements Serializable {
 	private int idCompteCourant;
 	
 	private double autorisationDecouvert = -1000;
-	private double soldeCompteCourant;
-	private Date dateOuvertureCompteCourant;
-	private String numeroCompteCourant;
+	private double soldeCompteCourant=0.0;
+	private Date dateOuvertureCompteCourant = new Date();
+	private String numeroCompteCourant="XX-XXXX-CC";
 	
-	@OneToOne(mappedBy = "compteCourant", fetch=FetchType.EAGER)
+	@OneToOne(mappedBy = "compteCourant", cascade = CascadeType.ALL)
 	private Client client;
 	
 

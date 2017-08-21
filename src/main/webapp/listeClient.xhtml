@@ -1,66 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
 
 
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{controlleur.loadClients()}" />
+	</f:metadata>
 <h:head>
-	<meta charset="ISO-8859-1" />
-
 	<title>Liste des clients</title>
 </h:head>
 <h:body>
-<h:form>
-	<p:dataTable var="tempClient" value="#{controlleur.clients}">
-		<p:column headerText="Id Client">
-			<h:outputText value="#{tempClient.idClient}" />
-		</p:column>
+	<h:form>
+		<p:dataTable var="tempClient" value="#{controlleur.clients}" emptyMessage="La liste client(s) est vide">
+		
+<!-- 			<p:column headerText="Numero de Client"> -->
+<!-- 				<h:outputText value="#{tempClient.idClient}" /> -->
+<!-- 			</p:column> -->
 
-		<p:column headerText="Nom">
-			<h:outputText value="#{tempClient.nom}" />
-		</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{tempClient.nom}" />
+			</p:column>
 
-		<p:column headerText="Prenom">
-			<h:outputText value="#{tempClient.prenom}" />
-		</p:column>
+			<p:column headerText="Prénom">
+				<h:outputText value="#{tempClient.prenom}" />
+			</p:column>
 
-		<p:column headerText="Adresse">
-			<h:outputText value="#{tempClient.adresse}" />
-		</p:column>
+			<p:column headerText="Adresse">
+				<h:outputText value="#{tempClient.adresse}" />
+			</p:column>
 
-		<p:column headerText="Email">
-			<h:outputText value="#{tempClient.email}" />
-		</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{tempClient.email}" />
+			</p:column>
 
-		<p:column headerText="Action">
+			<p:column headerText="Action">
+
+
+				<!--  the value for each row -->
+
+				<p:commandButton type="submit" id="updateClient"
+					value="Mise à jour client"
+					action="#{controlleur.detailClient(tempClient.idClient)}" />
 			
-
-			<!--  the value for each row -->
-			
-			<p:commandButton type="submit" id="updateClient" value="Update client"
-			
-			action="#{controlleur.detailClient(tempClient.idClient)}" />
-			
-					|<p:commandButton type="submit" id="supprimerClient" value="Supprimer client"
-					onclick="if (!confirm('Are you sure you want to delete this student?')) return false"
-			action="#{controlleur.suppressionClient(tempClient.idClient)}" />
+					|<p:commandButton type="submit" id="supprimerClient"
+					value="Supprimer client"
+					onclick="if (!confirm('Etes-vous sûr de vouloir supprimer le client ?')) return false"
+					action="#{controlleur.suppressionClient(tempClient.idClient)}" update="@form" />
 
 
-		</p:column>
-	</p:dataTable>
-<!-- 	<p> -->
-<!-- 		<h:commandButton type="submit" value="Supprimer" -->
-<!-- 			action="#{Controller.suppressionClient}" /> -->
-<!-- 	</p> -->
-<!-- 	<p> -->
-<!-- 		<h:commandButton type="submit" value="Update" -->
-<!-- 			action="#{Controller.miseAJourInfosClient}" /> -->
-<!-- 	</p> -->
-</h:form>
-<p><h:outputLink value="accueil.xhtml">Retour à l'acceuil</h:outputLink></p>
+			</p:column>
+		</p:dataTable>
+		<!-- 	<p> -->
+		<!-- 		<h:commandButton type="submit" value="Supprimer" -->
+		<!-- 			action="#{Controller.suppressionClient}" /> -->
+		<!-- 	</p> -->
+		<!-- 	<p> -->
+		<!-- 		<h:commandButton type="submit" value="Update" -->
+		<!-- 			action="#{Controller.miseAJourInfosClient}" /> -->
+		<!-- 	</p> -->
+	</h:form>
+	<p>
+		<h:outputLink value="accueil.xhtml">Retour à l'accueil</h:outputLink>
+	</p>
 </h:body>
 </html>

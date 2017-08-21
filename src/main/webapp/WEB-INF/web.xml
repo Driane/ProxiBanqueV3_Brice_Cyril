@@ -17,10 +17,7 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>
 	</context-param>
-	<context-param>
-		<param-name>BootsFaces_USETHEME</param-name>
-		<param-value>true</param-value>
-	</context-param>
+
 	<!-- Chargement conteneur CDI -->
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
@@ -72,7 +69,7 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/login.xhtml</form-login-page>
+			<form-login-page>/WEB-INF/login.xhtml</form-login-page>
 			<form-error-page>/error.xhtml</form-error-page>
 		</form-login-config>
 	</login-config>

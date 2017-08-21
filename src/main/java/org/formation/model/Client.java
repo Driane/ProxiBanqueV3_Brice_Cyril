@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 /**
  * 
  * @author Brice Adelin/Cyril Rabineau
@@ -22,6 +24,7 @@ import javax.persistence.Table;
  */
 
 @Entity
+@SelectBeforeUpdate
 @ManagedBean
 @Table(name="client")
 public class Client implements Serializable {
@@ -34,6 +37,7 @@ public class Client implements Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	@Column(name = "idClient", nullable = false, unique = true)
 	private int idClient;
 	
@@ -45,13 +49,13 @@ public class Client implements Serializable {
 	private String codePostal;
 	private String ville;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="comptecourant_client", unique=true)
-	private CompteCourant compteCourant;
+	private CompteCourant compteCourant = new CompteCourant();
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="compteepargne_client", unique=true)
-	private CompteEpargne compteEpargne;
+	private CompteEpargne compteEpargne = new CompteEpargne();
 	
 
 

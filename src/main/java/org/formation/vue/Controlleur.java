@@ -43,7 +43,6 @@ public class Controlleur implements Serializable {
 
 	
 	public List<Client> getClients() {
-		loadClients();
 		return clients;
 	}
 	
@@ -116,7 +115,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-		return "listeClient";
+		return "listeClient?faces-redirect=true";
 	}
 
 	public String buttonAction() {
@@ -149,20 +148,22 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-		return "updateClient.xhtml";
+		return "updateClient";
 	}
 
 	public String miseAJourInfosClient(Client client) {
 
 		LOGGER.debug("Mise à jour infos client : " + client);
+//		System.out.println("!!! Tentative Client update : " + client);
 
 
 		try {
-			System.out.println("Client update : " + client);
+//			System.out.println("!!!!!!!!!!!! Client update : " + client);
 			clientComptesService.miseAJourClient(client);
 
 		} catch (Exception exc) {
 			// send this to server logs
+//			System.out.println("!!!!!!!!!!!! Client update - RATE !!!!!!!!! " + client);
 			LOGGER.error("Erreur lors de la mise à jour du client : " + client, exc);
 
 			// add error message for JSF page
@@ -192,7 +193,7 @@ public class Controlleur implements Serializable {
 
 			return null;
 		}
-		return "listeClient";
+		return "listeClient?faces-redirect=true";
 	}
 
 	public void listeCompteCourantClients() {
@@ -239,7 +240,7 @@ public class Controlleur implements Serializable {
 		}
 
 		// return "update-student-form.xhtml";
-		return "listeClient";
+		return "listeClient?faces-redirect=true";
 	}
 	
 	public String gotoClient() {

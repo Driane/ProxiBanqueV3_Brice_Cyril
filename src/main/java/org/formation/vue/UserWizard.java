@@ -35,7 +35,7 @@ public class UserWizard implements Serializable {
     }
      
     public void save() {        
-        FacesMessage msg = new FacesMessage("Successful", "Welcome :" + user.getNom());
+        FacesMessage msg = new FacesMessage("Réussi", "Bienvenue :" + user.getNom());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      

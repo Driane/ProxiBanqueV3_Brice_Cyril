@@ -1,18 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 	
 <h:head>
-<meta charset="ISO-8859-1"/>
+
 <title>Liste des comptes</title>
 </h:head>
 <h:body>
 
-	<p:dataTable var="tempcompteCourant" value="#{controlleur.compteCourantClients}">
+	<p:dataTable var="tempcompteCourant" value="#{controlleur.compteCourantClients}" emptyMessage="La liste des comptes est vide">
 		<p:column headerText="Numero compte courant">
 			<h:outputText value="#{tempcompteCourant.numeroCompteCourant}" />
 		</p:column>
@@ -21,7 +20,7 @@
 			<h:outputText value="#{tempcompteCourant.client.nom}" />
 		</p:column>
 		
-		<p:column headerText="Prenom">
+		<p:column headerText="Prénom">
 			<h:outputText value="#{tempcompteCourant.client.prenom}" />
 		</p:column>
 
@@ -40,7 +39,7 @@
 			<h:outputText value="#{tempcompteEpargne.client.nom}" />
 		</p:column>
 		
-		<p:column headerText="Prenom">
+		<p:column headerText="Prénom">
 			<h:outputText value="#{tempcompteEpargne.client.prenom}" />
 		</p:column>
 
@@ -49,6 +48,6 @@
 		</p:column>
 
 	</p:dataTable>
-<p><h:outputLink value="accueil.xhtml">Retour à l'acceuil</h:outputLink></p>
+<p><h:outputLink value="accueil.xhtml">Retour à l'accueil</h:outputLink></p>
 </h:body>
 </html>

@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
@@ -13,75 +12,98 @@
 
 		<p:growl id="growl" sticky="true" showDetail="true" />
 
-		<p:wizard flowListener="#{userWizard.onFlowProcess}">
-			<p:tab id="personal" title="Personal">
-				<p:panel header="Personal Details">
+<!-- 		<p:wizard flowListener="#{userWizard.onFlowProcess}"> -->
+			<p:tab id="personal" title="Informations client">
+				<p:panel header="Informations client">
 					<p:messages />
 					<h:panelGrid columns="2" columnClasses="label, value">
-						<h:outputText value="Nom *" />
-						<p:inputText value="#{userWizard.user.nom}" required="true"
-							label="Nom" />
+						<h:outputText value="Nom : *" />
+						<p:inputText value="#{userWizard.user.nom}" id="Nom" label="Nom"
+							required="true" minlength="3" type="text" placeholder="Nom">
+						</p:inputText>
 
-						<h:outputText value="Prenom *" />
-						<p:inputText value="#{userWizard.user.prenom}" required="true"
-							label="Prenom" />
-						<h:outputText value="Adresse " />
-						<p:inputText value="#{userWizard.user.adresse}" required="true" />
+						<h:outputText value="Prénom : *" />
+						<p:inputText value="#{userWizard.user.prenom}" id="Prenom"
+							label="Prénom" required="true" minlength="3" type="text" placeholder="Prénom">
+						</p:inputText>
 
-						<h:outputText value="Code postal: " />
-						<p:inputText value="#{userWizard.user.codePostal}" />
+						<h:outputText value="Adresse : *" />
+						<p:inputText value="#{userWizard.user.adresse}" id="Adresse"
+							label="Adresse" required="true" type="text" placeholder="Adresse"/>
 
-						<h:outputText value="Ville: " />
-						<p:inputText value="#{userWizard.user.ville}" />
-						<h:outputText value="Email: *" />
+
+						<h:outputText value="Code postal : *" />
+						<p:inputText value="#{userWizard.user.codePostal}" id="CodePostal"
+							label="Code postal" required="true" type="text" minlength="5"
+							maxlength="5" placeholder="Code postal"/>
+
+
+						<h:outputText value="Ville : *" />
+						<p:inputText value="#{userWizard.user.ville}" required="true"
+							label="Ville" type="text" id="Ville" placeholder="Ville">
+						</p:inputText>
+
+
+						<h:outputText value="Email : *" />
 						<p:inputText value="#{userWizard.user.email}" required="true"
-							label="Email" />
+							label="Email" type="email" id="Email" placeholder="Email" validatorMessage="Format email invalide : xxx@xxx.xx">
+							<f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</p:inputText>
+
+
 					</h:panelGrid>
 				</p:panel>
 			</p:tab>
 
-			<p:tab id="confirm" title="Confirmation">
-				<p:panel header="Confirmation">
-					<h:panelGrid id="confirmation" columns="3"
-						columnClasses="grid,grid,grid">
-						<h:panelGrid columns="2" columnClasses="label, value">
-							<h:outputText value="Nom " />
-							<h:outputText value="#{userWizard.user.nom}"
-								styleClass="outputLabel" />
+<!-- 			<p:tab id="confirm" title="Confirmation"> -->
+<!-- 				<p:panel header="Confirmation"> -->
+<!-- 					<h:panelGrid id="confirmation" columns="3" -->
+<!-- 						columnClasses="grid,grid,grid"> -->
+<!-- 						<h:panelGrid columns="2" columnClasses="label, value"> -->
+<!-- 							<h:outputText value="Nom " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.nom}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
-							<h:outputText value="Prénom: " />
-							<h:outputText value="#{userWizard.user.prenom}"
-								styleClass="outputLabel" />
+<!-- 							<h:outputText value="Prénom: " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.prenom}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
-							<h:outputText value="Adresse: " />
-							<h:outputText value="#{userWizard.user.adresse}"
-								styleClass="outputLabel" />
+<!-- 							<h:outputText value="Adresse: " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.adresse}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
-							<h:outputText value="Code postal: " />
-							<h:outputText value="#{userWizard.user.codePostal}"
-								styleClass="outputLabel" />
+<!-- 							<h:outputText value="Code postal: " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.codePostal}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
-							<h:outputText value="Ville: " />
-							<h:outputText value="#{userWizard.user.ville}"
-								styleClass="outputLabel" />
+<!-- 							<h:outputText value="Ville: " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.ville}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
-							<h:outputText value="Email: " />
-							<h:outputText value="#{userWizard.user.email}"
-								styleClass="outputLabel" />
+<!-- 							<h:outputText value="Email: " /> -->
+<!-- 							<h:outputText value="#{userWizard.user.email}" -->
+<!-- 								styleClass="outputLabel" /> -->
 
 
-							<h:outputText />
-							<h:outputText />
-						</h:panelGrid>
-					</h:panelGrid>
+<!-- 							<h:outputText /> -->
+<!-- 							<h:outputText /> -->
+<!-- 						</h:panelGrid> -->
+<!-- 					</h:panelGrid> -->
 
-					<p:commandButton value="Submit" action="#{controlleur.ajoutClient(userWizard.user)}"
-						update="growl"  />
-				</p:panel>
-			</p:tab>
-		</p:wizard>
+<!-- 					<p:commandButton value="Soumettre" -->
+<!-- 						action="#{controlleur.ajoutClient(userWizard.user)}" -->
+<!-- 						update="growl" /> -->
+<!-- 				</p:panel> -->
+<!-- 			</p:tab> -->
+<!-- 		</p:wizard> -->
+					<p:commandButton value="Soumettre"
+						action="#{controlleur.ajoutClient(userWizard.user)}"
+						update="growl" />
 
 	</h:form>
-	<p><h:outputLink value="accueil.xhtml">Retour à l'accueil</h:outputLink></p>
+	<p>
+		<h:outputLink value="accueil.xhtml">Retour à l'accueil</h:outputLink>
+	</p>
 </h:body>
 </html>

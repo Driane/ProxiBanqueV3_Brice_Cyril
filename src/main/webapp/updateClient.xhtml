@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
@@ -9,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<title>Update Student</title>
+	<title>Mise à jour Client</title>
 	
 	<h:outputStylesheet library="css" name="style.css"  />
 	<h:outputStylesheet library="css" name="add-student-style.css"  />
@@ -27,20 +26,26 @@
 		<h:form id="form" style="margin-top: 10px;" >
 			<h:panelGrid columns="3">
 			
-				<h:outputLabel>Nom :</h:outputLabel> <h:inputText value="#{client.nom}" id="nom" /> <h:message for="nom" />
+			
+				<h:outputLabel>Nom :</h:outputLabel> <p:inputText value="#{client.nom}" id="nom" label="Nom"
+							required="true" minlength="3" type="text"/> <h:message for="nom" />
 	
-				<h:outputLabel>Prenom :</h:outputLabel> <h:inputText value="#{client.prenom}" id="prenom" /> <h:message for="prenom" />
+				<h:outputLabel>Prénom :</h:outputLabel> <p:inputText value="#{client.prenom}" id="prenom" label="Prénom" required="true" minlength="3" type="text"  /> <h:message for="prenom" />
 	
-	<h:outputLabel>Adresse :</h:outputLabel> <h:inputText value="#{client.adresse}" id="adresse" /> <h:message for="adresse" />
+	<h:outputLabel>Adresse :</h:outputLabel> <p:inputText value="#{client.adresse}" id="adresse" /> <h:message for="adresse" label="Adresse" required="true" type="text"/>
 	
-	<h:outputLabel>Code postal :</h:outputLabel> <h:inputText value="#{client.codePostal}" id="codePostal" /> <h:message for="codePostal" />
+	<h:outputLabel>Code postal :</h:outputLabel> <p:inputText value="#{client.codePostal}" id="codePostal" label="Code postal" required="true" type="text" minlength="5"
+							maxlength="5"/> <h:message for="codePostal" />
 	
-	<h:outputLabel>Ville :</h:outputLabel> <h:inputText value="#{client.ville}" id="ville" /> <h:message for="ville" />
+	<h:outputLabel>Ville :</h:outputLabel> <p:inputText value="#{client.ville}" id="ville" required="true"
+							label="Ville" type="text" /> <h:message for="ville" />
 	
-				<h:outputLabel>Email :</h:outputLabel> <h:inputText value="#{client.email}" id="email" 
-									required="true"
-            							requiredMessage="Your email is mandatory."/> 	<h:message for="email"  />
-				
+				<h:outputLabel>Email :</h:outputLabel> <p:inputText value="#{client.email}"  required="true"
+							label="Email" type="email" id="email" validatorMessage="Format email invalide : xxx@xxx.xx">
+							<f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</p:inputText>
+				<h:message for="email" />
 				
 				 <p:commandButton type="submit" id="sauvegarderClient" value="Sauvegarder" styleClass="save" action="#{controlleur.miseAJourInfosClient(client)}"/>
 				 
@@ -50,7 +55,7 @@
 
 		<div style="clear: both;"></div>
 
-		<p><h:outputLink value="accueil.xhtml">Retour à l'acceuil</h:outputLink></p>
+		<p><h:outputLink value="accueil.xhtml">Retour à l'accueil</h:outputLink></p>
 
 </h:body>
 </html>

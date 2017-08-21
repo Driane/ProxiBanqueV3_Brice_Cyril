@@ -108,7 +108,7 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 	}
 	
 	/**
-	 * Méthode permettant al mise à jour des infos d'un client
+	 * Méthode permettant la mise à jour des infos d'un client
 	 */
 	@Override
 	public void miseAJourClientDao(Client client) throws Exception {
@@ -116,6 +116,8 @@ public class ClientComptesDao implements Serializable, IClientComptesDao {
 		EntityTransaction txn = em.getTransaction();
 		try {
 			txn.begin();
+			client.getCompteCourant();
+			client.getCompteEpargne();
 			em.merge(client);
 			txn.commit();
 		} catch (Exception e) {
