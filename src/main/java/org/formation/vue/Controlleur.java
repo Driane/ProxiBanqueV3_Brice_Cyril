@@ -154,16 +154,16 @@ public class Controlleur implements Serializable {
 	public String miseAJourInfosClient(Client client) {
 
 		LOGGER.debug("Mise à jour infos client : " + client);
-//		System.out.println("!!! Tentative Client update : " + client);
+		System.out.println("!!! Tentative Client update : " + client);
 
 
 		try {
-//			System.out.println("!!!!!!!!!!!! Client update : " + client);
+			System.out.println("!!!!!!!!!!!! Client update : " + client);
 			clientComptesService.miseAJourClient(client);
 
 		} catch (Exception exc) {
 			// send this to server logs
-//			System.out.println("!!!!!!!!!!!! Client update - RATE !!!!!!!!! " + client);
+			System.out.println("!!!!!!!!!!!! Client update - RATE !!!!!!!!! " + client);
 			LOGGER.error("Erreur lors de la mise à jour du client : " + client, exc);
 
 			// add error message for JSF page
